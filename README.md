@@ -10,19 +10,13 @@ npm i mailshooter
 
 ## 3. Start sending emails
 ```
-const mailshooter = require('mailshooter');
+const ms = require('mailshooter');
 
-const sendmail = async ({ email, subject, html }) => {
-	const response = await mailshooter({
-		apikey: 'YOUR-API-KEY',
-		email, subject, html
-	})
-	console.log(response);
-}
-
-sendmail({
-	email: 'receiver@domain.com',
+ms({
+	apikey: 'YOUR-API-KEY',
+	from: 'sender@domain.com',
+	to: 'receiver@domain.com',
 	subject: 'Hello World',
-	html: '<b>Hello World</b><br/>This is my first email sent with mailshooter.dev!'
-})
+	html: 'This is my first MailShooter Email!'
+}).then(console.log);
 ```
